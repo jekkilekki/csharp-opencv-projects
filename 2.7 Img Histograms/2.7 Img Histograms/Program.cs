@@ -14,6 +14,8 @@ namespace Project
             Mat dst = new Mat();
 
             Cv2.CvtColor(src, gray, ColorConversionCodes.BGR2GRAY);
+            
+            // Cv2.CalcHist(Mat[] images, int[] channels, InputArray mask, OutputArray hist, int dims, int[] histSize, Rangef[] ranges, bool uniform = true, bool accumulate = false)
             Cv2.CalcHist(new Mat[] { gray }, new int[] { 0 }, null, hist, 1, new int[] { 256 }, new Rangef[] { new Rangef(0, 256) });
             Cv2.Normalize(hist, hist, 0, 255, NormTypes.MinMax);
 
