@@ -1,10 +1,14 @@
+# 2.7-img-hist.py
 import cv2
 import numpy as np
 
 img = cv2.imread('botw.png')
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 result = np.zeros((img.shape[0], 256), dtype = np.uint8)
+
+# hist = cv2.calcHist(images, channels, mask, histSize, ranges, hist = None, accumulate = False)
 hist = cv2.calcHist([img], [0], None, [256], [0, 256])
+
 cv2.normalize(hist, hist, 0, 255, cv2.NORM_MINMAX)
 
 for x, y in enumerate(hist):
